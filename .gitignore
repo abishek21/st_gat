@@ -1,0 +1,16 @@
+data_loader/__MACOSX
+venv/
+**__pycache__
+lib/
+bin/
+*.zip
+default.npy
+runs/
+*.pt
+dataset/processed
+dataset/raw
+.DS_Store
+dataset/.DS_Store
+raw/
+processed/
+!runs/saved_model

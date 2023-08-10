@@ -12,12 +12,12 @@ from matplotlib import pyplot as plt
 
 current_time = datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S")
 # Create a folder with the datetime stamp
-log_dir = f"./runs/{current_time}"
+log_dir = f"./runs/logs/{current_time}"
 os.makedirs(log_dir)
 
-train_log_dir = './runs/'+log_dir +'/train'
+train_log_dir = log_dir +'/train'
 train_summary_writer = tf.summary.create_file_writer(train_log_dir)
-eval_log_dir = './runs/'+log_dir +'/eval'
+eval_log_dir = log_dir +'/eval'
 eval_summary_writer=tf.summary.create_file_writer(eval_log_dir)
 
 

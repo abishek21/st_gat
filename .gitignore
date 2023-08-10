@@ -5,7 +5,7 @@ lib/
 bin/
 *.zip
 default.npy
-runs/
+runs/logs
 *.pt
 dataset/processed
 dataset/raw

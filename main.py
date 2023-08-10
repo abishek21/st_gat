@@ -74,4 +74,4 @@ def main(saved_model_path=''):
 
 
 if __name__ == "__main__":
-    main(saved_model_path='./runs/saved_model')
+    main(saved_model_path='')

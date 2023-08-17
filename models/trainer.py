@@ -38,7 +38,7 @@ def eval(model,dataloader,dataset_mean,dataset_std,type,epoch):
     for i, batch in enumerate(dataloader):
         inputs, target = batch
         x,a=inputs
-        print(x.shape,a.shape)
+        # print(x.shape,a.shape)
         if x.shape[0] == 1:
             print('PASS')
         elif x.shape[0]==50:
@@ -47,7 +47,7 @@ def eval(model,dataloader,dataset_mean,dataset_std,type,epoch):
             inputs=(x,a)
             pred = model(inputs, training=False)
             # truth = batch.y.view(pred.shape)
-            print("pred :",pred.shape)
+            # print("pred :",pred.shape)
             truth = np.reshape(target, (pred.shape[0], pred.shape[1]))
             if i == 0:
                 y_pred = np.zeros((dataloader.steps_per_epoch, pred.shape[0], pred.shape[1]))
@@ -102,9 +102,10 @@ def model_train(train, val, config,dataset_mean,dataset_std):
     optimizer = Adam(lr=config['INITIAL_LR'],decay=config['WEIGHT_DECAY'])
     loss_fn=MeanSquaredError()
     step=0
-    train_dataloader = BatchLoader(train, batch_size=50,epochs=1)
+
 
     for epoch in range(1,config['EPOCHS']+1):
+        train_dataloader = BatchLoader(train, batch_size=50, epochs=1)
         for batch in train_dataloader:
             step+=1
             inputs, target = batch
@@ -136,7 +137,7 @@ def model_train(train, val, config,dataset_mean,dataset_std):
                 tf.summary.scalar('val_mape', val_mape, step=step)
 
 
-        print(f"epoch : {epoch} , step {step} : loss {loss}")
+        print(f"epoch : {epoch} finished , step {step} : loss {loss}")
 
     return model
 

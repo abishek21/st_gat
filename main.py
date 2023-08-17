@@ -63,15 +63,21 @@ def main(saved_model_path=''):
         model = model_train(train, val, config,data_mean,data_std)
         tf.keras.models.save_model(model, "./runs/saved_model")
         print('Model saved')
+
+
+        model=tf.saved_model.load(saved_model_path)
+        print('model loaded')
+        model_test(model, test, data_mean, data_std, config)
         # Or, load from a saved checkpoint
         # model = load_from_checkpoint('./runs/model_final_60epochs.pt', config)
         # Test Model
 
     else:
-        print('model loaded')
+
         model=tf.saved_model.load(saved_model_path)
+        print('model loaded')
         model_test(model, test, data_mean, data_std, config)
 
 
 if __name__ == "__main__":
-    main(saved_model_path='')
+    main(saved_model_path='./runs/saved_model')
